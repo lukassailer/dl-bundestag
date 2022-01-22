@@ -1,2 +1,2 @@
 # dl-bundestag
-Data Literacy Project with Bundestag Data
+Data Literacy project with Bundestag data collected via https://de.openparliament.tv/api/
