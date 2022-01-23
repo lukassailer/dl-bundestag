@@ -11,7 +11,7 @@ input:
     - partyFilter party name to filter speeches by
 
 output:
-    List of comments
+    list of comments
 """
 
 
