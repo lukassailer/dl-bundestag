@@ -10,7 +10,16 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
     - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
       with:
         notebook: "./exp/*.ipynb"
     - uses: actions/upload-artifact@master
       if: always()
+      with:
+        name: output
+        path: ${{ RUNNER.temp }}/nb-runner
+      env:
+        RUNNER: ${{ toJson(runner) }}
