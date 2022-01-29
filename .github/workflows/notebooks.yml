@@ -1,24 +1,16 @@
-name: Jupyter Notebooks
+name: Execute notebook
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  run_notebooks:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
-
-      - name: Execute all notebooks with nbconvert
-        run: |
-          for file in $(find -wholename "./exp/*.ipynb")
-          do
-              jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=python3 $file
-          done
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+    - uses: yaananth/run-notebook@v1
+      with:
+        notebook: "./exp/*.ipynb"
+    - uses: actions/upload-artifact@master
+      if: always()
