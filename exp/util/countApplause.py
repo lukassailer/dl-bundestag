@@ -14,7 +14,7 @@ output:
 
 def countApplause(commentList: List[str]) -> pd.DataFrame:
     # matchers are minimal to also match other forms (e.g. genitive)
-    partyMatchers = ["AfD", "GRÜNEN", "CDU/CSU",    "LINKEN", "FDP", "SPD"]
+    partyMatchers = ["AfD", "GRÜNE", "CDU/CSU", "LINKE", "FDP", "SPD"]
 
     # only take the part before "–" to drop to drop further comments
     applause = "".join([comment.split("–")[0]
